@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- context:property-placeholder : 외부 파일을 참조하여 값을 가져올 수 있는 키워드 -->
+	<context:property-placeholder location="classpath:admin.properties, classpath:sub_admin.properties" />
+
+	<bean id="adminConnection" class="spring_di.exam08.AdminConnection">
+		<property name="adminId" value="${admin.id}" />
+		<property name="adminPw" value="${admin.pw}" />
+		<property name="sub_adminId" value="${sub_admin.id}" />
+		<property name="sub_adminPw" value="${sub_admin.pw}" />
+	</bean>
+	
+</beans>

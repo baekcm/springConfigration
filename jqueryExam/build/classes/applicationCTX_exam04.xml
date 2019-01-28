@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- 
+		환경 설정 파일을 .xml 과 .java 파일을 같이 사용하기 위해서는
+		1. XML 파일 내에 JAVA 파일을 포함시킨다.
+		<context:annotation-config /> 키워드를 먼저 등록하고
+		<bean class="JAVA 설정 파일" /> 을 명시한다.
+	 -->
+	<!-- context annotation config 를 사용하겠다는 의미. JAVA 설정파일을 쓰겠다는 의미이다. -->
+	<context:annotation-config />
+	
+	<bean class="spring_di.exam04.ApplicationConfig" />
+
+	<bean id="student2" class="spring_di.exam04.Student">
+		<constructor-arg value="안유진" />
+		<constructor-arg value="16살" />
+		<constructor-arg>
+			<list>
+				<value>달리기</value>
+				<value>진행</value>
+			</list>
+		</constructor-arg>
+		
+		<property name="height" value="169" />
+		<property name="weight" value="47" />
+	</bean>
+	
+</beans>
