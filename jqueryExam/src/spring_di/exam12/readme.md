@@ -10,3 +10,12 @@ AOP 용어
 
      호출부            =>      Proxy		=>		Target
 (client)		  (대행)			    (핵심기능)
+
+
+[Advice 종류]
+
+<aop:before> : 메소드 실행 전에 advice 실행
+<aop:after-returning> : 정상적으로 메소드 실행 후에 advice 실행
+<aop:after-throwing> : 메소드 실행 중 exception 발생 시 advice 실행
+<aop:after> : 메소드 실행 중 exception 이 발생하여도 advice 실행
+<aop:around> : 메소드 실행 전/후 및 exception 발생하여도 advice 실행
