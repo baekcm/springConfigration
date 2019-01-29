@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<bean id="logAop" class="spring_di.exam12.LogAop" />
+	
+	<!-- <aop:config> : AOP 설정을 하겠다. -->
+	<aop:config>
+		<!-- <aop:aspect> : 공통 기능을 정의하겠다. -->
+		<aop:aspect id="logger" ref="logAop">
+			<!-- <aop:pointcut> : 실질적인 핵심 코드 위치를 설정하겠다. -->
+			<aop:pointcut id="publicM" expression="within(spring_di.exam12.*)" />
+			<!-- <aop:around> : 어떤 메소드 어떤 기능을 줄건지 설정하겠다. -->
+			<!-- <aop:around> : 핵심 기능이 실행되기 전에 공통 기능이 한번 실행되고, 핵심 기능이 실행된 이후 다시 공통 기능이 실행되도록 설정하겠다는 의미. -->
+			<aop:around pointcut-ref="publicM" method="loggerAop" />
+		</aop:aspect>
+	</aop:config>
+	
+	<bean id="student" class="spring_di.exam12.Student">
+		<property name="name" value="홍길동" />
+		<property name="age" value="10" />
+		<property name="gradeNum" value="3" />
+		<property name="classNum" value="5" />
+	</bean>
+	
+	<bean id="worker" class="spring_di.exam12.Worker">
+		<property name="name" value="나코" />
+		<property name="age" value="18" />
+		<property name="job" value="아이돌" />
+	</bean>
+	
+</beans>
